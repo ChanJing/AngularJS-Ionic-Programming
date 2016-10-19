@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        
+        <title>Nested Controllers and Using HTML into Script</title>
+
+    </head>
+
+    <body>
+        <div ng-app="myApp">
+            <div ng-controller="outsideController">
+                <h2 ng-bind="outsideHeader"></h3>
+                <p ng-bind-html="outsideContentHtml"></p>
+
+                <div ng-controller="insideController">
+                    <h2>{{insideHeader}}</h2>
+                    <p><b>{{outsideControlled}}</b></p>
+                    <p ng-bind-html="insideContentHtml"></p>
+                </div>
+
+            </div>
+        </div>
+
+        <script type="text/javascript" src="angular-1.5.8/angular.js"></script>
+        <script type="text/javascript" src="angular-1.5.8/angular-sanitize.js"></script>
+        <script type="text/javascript">
+            var myApp = angular.module("myApp",['ngSanitize']);
+            myApp.controller('outsideController',['$scope',function($scope){
+                $scope.outsideHeader = 'Outside contents';
+                $scope.outsideContentHtml = '<p>This content is controlled by <b>outside</b> controller</p>';
+                $scope.outsideControlled = "If this information wasn't defined in insider controller and it has been defined in outside controller, this information is controlled by outside controller.";
+            }])
+            myApp.controller('insideController',['$scope',function($scope){
+                $scope.insideHeader = 'Inside contents';
+                $scope.insideContentHtml = '<p>This content is controlled by <b>inside</b> controller</p>';
+            }])
+        </script>
+    </body>
