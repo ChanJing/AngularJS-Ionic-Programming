@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+<div ng-app="myApp">
+    <div ng-controller="messageController">
+        Delayed Message : {{message}}
+
+    </div>
+
+</div>
+
+<script type="text/javascript" src="angular-1.5.8/angular.js"></script>
+<script type="text/javascript">
+    var app = angular.module("myApp",[]);
+    app.controller("messageController",['$scope','$timeout',function($scope,$timeout){
+        $scope.message = "Init Message and will be updated in four seconds";
+        $scope.getMessage = function(){
+            $timeout(function(){
+                $scope.message = "This is the delaysed Message ";
+            },4000);
+        };
+
+        $scope.getMessage();
+    }])
+</script>
+</body>
+</html>

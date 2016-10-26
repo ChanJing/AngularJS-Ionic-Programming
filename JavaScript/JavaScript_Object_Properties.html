@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Object Properties</title>
+</head>
+<body>
+	<p id="demo"></p>
+
+<script type="text/javascript">
+	var txt = "";
+	var person = {
+		fname:"John",
+		lname:"Doe",
+		age:25
+	};
+
+	// Adding New Properties 
+	person.nationality = "English";
+
+	// Deleting Properties
+	delete person.age;
+
+	var x;
+	for (x in person){
+		txt += person[x] + " ";
+	}
+
+	document.getElementById("demo").innerHTML = txt;
+
+</script>
+</body>
+</html>

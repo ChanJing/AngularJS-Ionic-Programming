@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Object Methods</title>
+</head>
+<body>
+<p id="creating"></p>
+<p id="build-in"></p>
+<p id="adding"></p>
+<script type="text/javascript">
+	function person(firstName,lastName,id) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.id = id;
+
+    this.fullName = function(){
+			return this.firstName + " " + this.lastName;
+		}
+    this.changeName = function (name) {
+        this.lastName = name;
+    }
+	}
+
+	var onePerson = new person("John", "Doe", 1234);
+	document.getElementById("creating").innerHTML = onePerson.fullName();
+	document.getElementById("build-in").innerHTML = onePerson.firstName.toUpperCase();
+	onePerson.changeName("Dorry");
+	document.getElementById("adding").innerHTML = onePerson.fullName();
+</script>
+</body>
+</html>
